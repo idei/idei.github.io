@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomatura en Desarrollo de Videojuegos - UNSJ</title>
+    <style>
+        :root {
+            --primary: #1A2A57;
+            --secondary: #368F8B;
+            --accent: #DDB967;
+            --light: #F5F5F5;
+            --dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            background-image: linear-gradient(135deg, rgba(26, 42, 87, 0.9), rgba(54, 143, 139, 0.9)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .highlights {
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        
+        .highlights ul {
+            list-style-type: none;
+        }
+        
+        .highlights li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .highlights li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlights strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .pricing {
+            background-color: rgba(54, 143, 139, 0.05);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+        
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .pricing-card ul {
+            list-style-type: none;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .note {
+            background-color: rgba(221, 185, 103, 0.2);
+            padding: 1rem;
+            border-left: 4px solid var(--accent);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        .conclusion {
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+        
+        .conclusion p {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+            
+            .pricing {
+                padding: 2rem 1rem;
+            }
+            
+            .pricing-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Diplomatura de Extensión en Desarrollo de Videojuegos</h1>
+            <p>Universidad Nacional de San Juan (UNSJ) - Abril a Diciembre 2025</p>
+            <a href="https://forms.google.com/create" target="_blank" class="cta-button">¡Inscríbete Ahora!</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="resumen">
+            <h2>Resumen</h2>
+            <p>La Diplomatura de Extensión en Desarrollo de Videojuegos de la UNSJ es un programa modular de 9 meses (abril a diciembre de 2025) diseñado para formar profesionales capaces de concebir, diseñar y producir videojuegos de alta calidad. Su currículo se estructura en cinco módulos esenciales —Diseño de Juegos, Programación, Arte 2D, Arte 3D y Negocio y Producción— que combinan clases teóricas, talleres, prácticas en laboratorio, proyectos integradores y mentorías impartidas por docentes universitarios y expertos de la industria, en colaboración con Academia Brinca y Keter Studio.</p>
+        </section>
+        
+        <section id="destacados">
+            <h2>Aspectos Destacados</h2>
+            <div class="highlights">
+                <ul>
+                    <li><strong>Calidad Académica e Industria:</strong> Con el aval de la Facultad de Ciencias Exactas, Físicas y Naturales, el programa reúne a destacados profesionales y docentes, lo que garantiza una formación actualizada y adaptada a las exigencias del mercado.</li>
+                    <li><strong>Metodología Learning-by-Doing:</strong> La combinación de teoría y práctica en ambientes equipados permite desarrollar competencias técnicas (manejo de lenguajes de programación, motores gráficos y herramientas de diseño) y creativas esenciales para la industria de videojuegos.</li>
+                    <li><strong>Requisitos de Admisión:</strong> Es indispensable contar con el título de secundario completo, lo que asegura que los participantes posean una base académica mínima adecuada para afrontar el programa.</li>
+                    <li><strong>Cupo Limitado y Prioridad para Estudiantes:</strong> La inscripción para estudiantes se realizará en función de la carrera que cursan y el año de cursado, otorgándole prioridad, en este orden, a las carreras de informática, diseño gráfico, arte y música. Asimismo, se dará preferencia a aquellos estudiantes que demuestren mayor avance en dichas carreras.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="precios">
+            <h2>Precios y Modalidades de Pago</h2>
+            <div class="pricing">
+                <p>El costo total de la diplomatura es de <strong>$650.000</strong> para el público en general, con las siguientes opciones de pago:</p>
+                
+                <div class="pricing-options">
+                    <div class="pricing-card">
+                        <h3>Público General</h3>
+                        <ul>
+                            <li>1 cuota: $650.000</li>
+                            <li>3 cuotas: $223.200</li>
+                            <li>6 cuotas: $114.900</li>
+                            <li>9 cuotas: $78.800</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Estudiantes UNSJ</h3>
+                        <p><strong>Descuento del 20%</strong></p>
+                        <ul>
+                            <li>1 cuota: $520.000</li>
+                            <li>3 cuotas: $178.600</li>
+                            <li>6 cuotas: $92.000</li>
+                            <li>9 cuotas: $63.100</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Profesores UNSJ</h3>
+                        <p><strong>Descuento del 10%</strong></p>
+                        <ul>
+                            <li>1 cuota: $585.000</li>
+                            <li>3 cuotas: $200.900</li>
+                            <li>6 cuotas: $103.500</li>
+                            <li>9 cuotas: $71.000</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <p><strong>Nota:</strong> Los precios están sujetos a cambio en función del índice de precios al consumidor (IPC) publicado por el Instituto Nacional de Estadísticas y Censos (INDEC). Además, la diplomatura permite inscribirse en módulos o talleres de manera independiente, ofreciendo opciones de pago similares según el módulo, lo que brinda flexibilidad a quienes deseen complementar su formación.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <section class="conclusion">
+        <div class="container">
+            <h2>Conclusión</h2>
+            <p>Esta diplomatura no solo responde a la creciente demanda de profesionales en la industria de los videojuegos, sino que también sienta las bases para el desarrollo de futuras propuestas académicas en el área. Con una estructura integral, modalidades de financiamiento atractivas, requisitos de admisión accesibles y un proceso de selección que prioriza a los estudiantes con formación en informática, diseño gráfico, arte y música, es la oportunidad ideal para quienes deseen ingresar o potenciar su carrera en el mundo del desarrollo de videojuegos.</p>
+            <a href="https://forms.google.com/create" target="_blank" class="cta-button">¡Inscríbete Ahora!</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Diplomatura de Extensión en Desarrollo de Videojuegos - Universidad Nacional de San Juan</p>
+            <p>Facultad de Ciencias Exactas, Físicas y Naturales</p>
+        </div>
+    </footer>
+</body>
+</html>
