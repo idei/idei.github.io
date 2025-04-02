@@ -341,15 +341,110 @@
 
         @media (max-width: 600px) {
             .calendar-days {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3px;
+                padding: 5px;
             }
-
-            .calendar-header {
-                grid-template-columns: 1fr;
-            }
-
+            
             .calendar-day {
-                margin-bottom: 10px;
+                padding: 5px;
+                min-height: 60px;
+                font-size: 0.85rem;
+            }
+            
+            .calendar-date {
+                font-size: 0.8rem;
+                margin-bottom: 3px;
+            }
+            
+            .calendar-class {
+                font-size: 0.75rem;
+                padding: 3px 4px;
+                margin-top: 3px;
+            }
+            
+            .calendar-container {
+                padding: 0.75rem;
+            }
+            
+            #current-month {
+                font-size: 1.2rem;
+            }
+            
+            .calendar-nav-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            
+            .calendar-header div {
+                font-size: 0.85rem;
+                padding: 0.5rem 0;
+            }
+            
+            .calendar-class .short-title {
+                display: block !important;
+                font-size: 0.75rem;
+            }
+            
+            .calendar-class .full-title {
+                display: none !important;
+            }
+            
+            .calendar-class br + span,
+            .calendar-class br {
+                font-size: 0.7rem;
+            }
+        }
+
+        .short-title {
+            display: none;
+        }
+
+        .full-title {
+            display: block;
+        }
+
+        /* Make these selectors more specific to override any conflicting styles */
+        .calendar-class .short-title {
+            display: none !important;
+        }
+
+        .calendar-class .full-title {
+            display: block !important;
+        }
+
+        @media (max-width: 600px) {
+            .calendar-class .short-title {
+                display: block !important;
+            }
+            
+            .calendar-class .full-title {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #supporters img {
+                max-width: 80px !important; /* Significantly reduce logo size on mobile */
+            }
+            
+            #supporters div {
+                gap: 10px !important; /* Reduce spacing between logos */
+            }
+            
+            #supporters {
+                padding: 1.5rem 0 !important; /* Reduce vertical padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #supporters img {
+                max-width: 60px !important; /* Further reduce for very small screens */
+            }
+            
+            #supporters div {
+                gap: 5px !important; /* Minimal spacing */
             }
         }
     </style>
@@ -358,7 +453,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>Diplomatura de Extensión en Desarrollo de Videojuegos</h1>
+            <h1 class="full-title">Diplomatura de Extensión en Desarrollo de Videojuegos</h1>
+            <h1 class="short-title">Diplomatura en Videojuegos</h1>
             <p>Universidad Nacional de San Juan (UNSJ) - Abril a Diciembre 2025</p>
             <a href="https://forms.gle/jcAvwVLQXgyd999w9" target="_blank" class="cta-button">¡Inscríbete Ahora!</a>
         </div>
@@ -529,18 +625,18 @@
 
             // Define all courses once with their details
             const courses = [
-                { title: "Introducción a Unreal Engine", time: "18:00 - 20:00", color: "#4D6CFA", class: 1 },
-                { title: "Producción", time: "18:30 - 20:30", color: "#3CAEA3", class: 1 },
-                { title: "Ilustración 2D I", time: "16:00 - 18:00", color: "#F6B93B", class: 1 },
-                { title: "Fundamentos de Game Design I", time: "18:30 - 20:30", color: "#9D7FEA", class: 1 },
-                { title: "Introducción a Godot Engine", time: "16:00 - 18:00", color: "#E57373", class: 1 },
-                { title: "Blueprints avanzados", time: "18:00 - 20:00", color: "#81C784", class: 1 },
-                { title: "Fundamentos de Game Design II", time: "18:30 - 20:30", color: "#673AB7", class: 1 },
-                { title: "Modelado Poligonal", time: "16:00 - 18:00", color: "#FFC107", class: 1 },
-                { title: "Introducción al Modelado 3D", time: "16:00 - 18:00", color: "#F48FB1", class: 1 },
-                { title: "Ilustración 2D II", time: "16:00 - 18:00", color: "#FF7043", class: 1 },
-                { title: "Emprendedurismo para videojuegos", time: "16:00 - 18:00", color: "#5C6BC0", class: 1 },
-                { title: "Sonido en Unreal Engine", time: "18:00 - 20:00", color: "#8BC34A", class: 1 }
+                { title: "Introducción a Unreal Engine", shortTitle: "Unreal", time: "18:00 - 20:00", color: "#4D6CFA", class: 1 },
+                { title: "Producción", shortTitle: "Prod.", time: "18:30 - 20:30", color: "#3CAEA3", class: 1 },
+                { title: "Ilustración 2D I", shortTitle: "Ilus. 2D I", time: "16:00 - 18:00", color: "#F6B93B", class: 1 },
+                { title: "Fundamentos de Game Design I", shortTitle: "G.Design I", time: "18:30 - 20:30", color: "#9D7FEA", class: 1 },
+                { title: "Introducción a Godot Engine", shortTitle: "Godot", time: "16:00 - 18:00", color: "#E57373", class: 1 },
+                { title: "Blueprints avanzados", shortTitle: "Blueprints", time: "18:00 - 20:00", color: "#81C784", class: 1 },
+                { title: "Fundamentos de Game Design II", shortTitle: "G. Design II", time: "18:30 - 20:30", color: "#673AB7", class: 1 },
+                { title: "Modelado Poligonal", shortTitle: "Mod. Polig.", time: "16:00 - 18:00", color: "#FFC107", class: 1 },
+                { title: "Introducción al Modelado 3D", shortTitle: "Mod. 3D", time: "16:00 - 18:00", color: "#F48FB1", class: 1 },
+                { title: "Ilustración 2D II", shortTitle: "Ilus. 2D II", time: "16:00 - 18:00", color: "#FF7043", class: 1 },
+                { title: "Emprendedurismo para videojuegos", shortTitle: "Emprend.", time: "16:00 - 18:00", color: "#5C6BC0", class: 1 },
+                { title: "Sonido en Unreal Engine", shortTitle: "Sonido UE", time: "18:00 - 20:00", color: "#8BC34A", class: 1 }
             ];
 
             // Course schedule using indices from the courses array
@@ -717,7 +813,7 @@
                                 classElement.style.backgroundColor = course.color + '33'; // Adding transparency
                                 classElement.style.borderLeft = `4px solid ${course.color}`;
 
-                                classElement.innerHTML = `<strong>${course.title}</strong><br>${course.time}`;
+                                classElement.innerHTML = `<strong class="full-title">${course.title}</strong><strong class="short-title">${course.shortTitle}</strong><br>${course.time}`;
                                 dayElement.appendChild(classElement);
                             });
                         } else {
