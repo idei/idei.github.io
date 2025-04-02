@@ -288,14 +288,21 @@
         .calendar-class {
             font-size: 0.9rem;
             color: var(--dark);
-            background-color: rgba(54, 143, 139, 0.2);
-            padding: 4px;
+            padding: 4px 8px;
             border-radius: 4px;
             margin-top: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-class:hover {
+            transform: translateX(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .calendar-class strong {
             color: var(--primary);
+            display: block;
+            margin-bottom: 2px;
         }
 
         .calendar-no-class {
@@ -459,7 +466,8 @@
         <div class="container">
             <h2>Calendario de Cursado 2025</h2>
             <p class="calendar-intro">Las clases se dictarán los días <strong>miércoles, jueves y viernes</strong> de
-                <strong>16:00 a 20:30 hs</strong>.</p>
+                <strong>16:00 a 20:30 hs</strong>.
+            </p>
 
             <div class="calendar-container">
                 <div class="calendar-controls">
@@ -519,544 +527,127 @@
             let currentMonth = startMonth;
             let currentYear = 2025;
 
-            // Course schedule data - Format: 'YYYY-MM-DD': [{ title: 'Course Name', time: 'Time Range' }]
+            // Define all courses once with their details
+            const courses = [
+                { title: "Introducción a Unreal Engine", time: "18:00 - 20:00", color: "#4D6CFA", class: 1 },
+                { title: "Producción", time: "18:30 - 20:30", color: "#3CAEA3", class: 1 },
+                { title: "Ilustración 2D I", time: "16:00 - 18:00", color: "#F6B93B", class: 1 },
+                { title: "Fundamentos de Game Design I", time: "18:30 - 20:30", color: "#9D7FEA", class: 1 },
+                { title: "Introducción a Godot Engine", time: "16:00 - 18:00", color: "#E57373", class: 1 },
+                { title: "Blueprints avanzados", time: "18:00 - 20:00", color: "#81C784", class: 1 },
+                { title: "Fundamentos de Game Design II", time: "18:30 - 20:30", color: "#673AB7", class: 1 },
+                { title: "Modelado Poligonal", time: "16:00 - 18:00", color: "#FFC107", class: 1 },
+                { title: "Introducción al Modelado 3D", time: "16:00 - 18:00", color: "#F48FB1", class: 1 },
+                { title: "Ilustración 2D II", time: "16:00 - 18:00", color: "#FF7043", class: 1 },
+                { title: "Emprendedurismo para videojuegos", time: "16:00 - 18:00", color: "#5C6BC0", class: 1 },
+                { title: "Sonido en Unreal Engine", time: "18:00 - 20:00", color: "#8BC34A", class: 1 }
+            ];
+
+            // Course schedule using indices from the courses array
             const courseSchedule = {
-                "2025-04-23": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-04-24": [
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-04-25": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-04-30": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-05-07": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-05-08": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-09": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-14": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-05-15": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
+                "2025-04-23": [0], // Introducción a Unreal Engine
+                "2025-04-24": [1], // Producción
+                "2025-04-25": [2, 3], // Ilustración 2D I, Fundamentos de Game Design I
+                "2025-04-30": [0],
+                // Mayo
+                "2025-05-07": [0],
+                "2025-05-08": [4, 1],
+                "2025-05-09": [2, 3],
+                "2025-05-14": [0],
+                "2025-05-15": [4, 1],
+                "2025-05-16": [2, 3],
+                "2025-05-21": [0],
+                "2025-05-22": [4, 1],
+                "2025-05-23": [2, 3],
+                "2025-05-28": [0],
+                "2025-05-29": [4, 1],
+                "2025-05-30": [2, 3],
+                // Junio
+                "2025-06-04": [0],
+                "2025-06-05": [4, 1],
+                "2025-06-06": [2, 3],
 
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-16": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-21": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-05-22": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
+                "2025-06-11": [0],
+                "2025-06-12": [4, 1],
 
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-23": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-28": [
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-05-29": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
+                "2025-06-18": [0],
+                "2025-06-19": [4, 1],
 
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-05-30": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-04": [
-                    {
-                        "title": "Introducción al Modelado 3D",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    },
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-06-05": [
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-06": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-11": [
-                    {
-                        "title": "Introducción al Modelado 3D",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    },
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-06-12": [
-                    {
-                        "title": "Producción",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-13": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Fundamentos de Game Design I",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-18": [
-                    {
-                        "title": "Introducción al Modelado 3D",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Introducción a Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    },
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-06-19": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-20": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-06-25": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-06-26": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-06-27": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-07-02": [
-                    {
-                        "title": "Introducción a Godot Engine",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-07-03": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-07-04": [
-                    {
-                        "title": "Ilustración 2D I",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-07-09": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-07-10": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-07-11": [
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-07-16": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-07-17": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-07-18": [
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-07-23": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-07-24": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-07-25": [
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-07-30": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-07-31": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-08-01": [
-                    {
-                        "title": "Modelado Poligonal",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-08-06": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-08-07": [
-                    {
-                        "title": "Fundamentos de Game Design II",
-                        "time": "18:30 - 20:30"
-                    }
-                ],
-                "2025-08-08": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-08-13": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-08-14": [],
-                "2025-08-15": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-08-20": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-08-21": [],
-                "2025-08-22": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-08-27": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-08-28": [],
-                "2025-08-29": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-09-03": [
-                    {
-                        "title": "Blueprints avanzados",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-09-04": [],
-                "2025-09-05": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-09-10": [],
-                "2025-09-11": [],
-                "2025-09-12": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-09-17": [],
-                "2025-09-18": [],
-                "2025-09-19": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-09-24": [],
-                "2025-09-25": [],
-                "2025-09-26": [
-                    {
-                        "title": "Ilustración 2D II",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-01": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-02": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Sonido en Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-10-03": [],
-                "2025-10-08": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-09": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Sonido en Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-10-10": [],
-                "2025-10-15": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-16": [
-                    {
-                        "title": "Sonido en Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-10-17": [],
-                "2025-10-22": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-23": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    },
-                    {
-                        "title": "Sonido en Unreal Engine",
-                        "time": "18:00 - 20:00"
-                    }
-                ],
-                "2025-10-24": [],
-                "2025-10-29": [
-                    {
-                        "title": "Emprendedurismo para videojuegos",
-                        "time": "16:00 - 18:00"
-                    }
-                ],
-                "2025-10-30": [],
-                "2025-10-31": [],
-                "2025-11-05": [],
-                "2025-11-06": [],
-                "2025-11-07": [],
-                "2025-11-12": [],
-                "2025-11-13": [],
-                "2025-11-14": [],
-                "2025-11-19": [],
-                "2025-11-20": [],
-                "2025-11-21": [],
-                "2025-11-26": [],
-                "2025-11-27": [],
-                "2025-11-28": [],
-                "2025-12-03": [],
-                "2025-12-04": [],
-                "2025-12-05": [],
-                "2025-12-10": [],
-                "2025-12-11": [],
-                "2025-12-12": [],
-                "2025-12-17": [],
-                "2025-12-18": [],
-                "2025-12-19": []
+                "2025-06-25": [8, 0],
+                "2025-06-26": [4],
+                "2025-06-27": [2, 3],
+                // Julio
+                "2025-07-02": [8, 0],
+                "2025-07-03": [4],
+                "2025-07-04": [2, 3],
+
+                "2025-07-23": [8,0],
+                "2025-07-24": [4],
+                "2025-07-25": [2],
+                "2025-07-30": [8],
+                "2025-07-31": [4],
+                // Agosto
+                "2025-08-01": [2,6],
+
+                "2025-08-06": [7],
+                "2025-08-07": [5],
+                "2025-08-08": [2,6],
+
+                "2025-08-13": [7],
+                "2025-08-14": [5],
+
+                "2025-08-20": [7],
+                "2025-08-21": [5],
+                "2025-08-22": [2,6],
+
+                "2025-08-27": [7],
+                "2025-08-28": [5],
+                "2025-08-29": [6,9],
+
+                // Septiembre
+                "2025-09-03": [7],
+                "2025-09-04": [5],
+                "2025-09-05": [6,9],
+
+                "2025-09-10": [7],
+                "2025-09-12": [6,9],
+
+                "2025-09-17": [7],
+                "2025-09-18": [5],
+                "2025-09-19": [6,9],
+
+                "2025-09-24": [7],
+                "2025-09-25": [5],
+                "2025-09-26": [6,9],
+
+                // Octubre
+                "2025-10-02": [5],
+                "2025-10-03": [9],
+
+                "2025-10-09": [5],
+
+                "2025-10-16": [5],
+                "2025-10-17": [9],
+
+                "2025-10-23": [5],
+                "2025-10-24": [9],
+
+                "2025-10-30": [5],
+
+                // Noviembre
+                "2025-11-06": [10,11],
+                "2025-11-07": [10],
+
+                "2025-11-13": [10,11],
+                "2025-11-14": [10],
+
+                "2025-11-20": [10,11],
+
+                "2025-11-27": [10,11],
+                "2025-11-28": [10],
+
+                // Diciembre
+                "2025-12-04": [10],
             };
 
             const calendarDays = document.getElementById('calendar-days');
@@ -1117,9 +708,15 @@
                         // Check if this date has custom courses
                         if (courseSchedule[dateString] && courseSchedule[dateString].length > 0) {
                             // Add each course for this day
-                            courseSchedule[dateString].forEach(course => {
+                            courseSchedule[dateString].forEach(courseIndex => {
+                                const course = courses[courseIndex];
                                 const classElement = document.createElement('div');
                                 classElement.classList.add('calendar-class');
+
+                                // Apply the course color
+                                classElement.style.backgroundColor = course.color + '33'; // Adding transparency
+                                classElement.style.borderLeft = `4px solid ${course.color}`;
+
                                 classElement.innerHTML = `<strong>${course.title}</strong><br>${course.time}`;
                                 dayElement.appendChild(classElement);
                             });
