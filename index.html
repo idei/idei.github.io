@@ -681,7 +681,10 @@
             <h2>Aspectos Destacados</h2>
             <div class="highlights">
                 <ul>
-                    <li><strong>Inicio Oficial:</strong> La diplomatura comienza el 23 de abril a las 17:00 horas en el local de CECI (Centro de Economía del Conocimiento e Innovación), ubicado en <a href="https://g.co/kgs/Z9ZHxBW" target="_blank" style="color: var(--secondary); text-decoration: underline;">este enlace</a>.</li>
+                    <li><strong>Inicio Oficial:</strong> La diplomatura comienza el 23 de abril a las 17:00 horas en el
+                        local de CECI (Centro de Economía del Conocimiento e Innovación), ubicado en <a
+                            href="https://g.co/kgs/Z9ZHxBW" target="_blank"
+                            style="color: var(--secondary); text-decoration: underline;">este enlace</a>.</li>
                     <li><strong>Calidad Académica e Industria:</strong> Con el aval de la Facultad de Ciencias Exactas,
                         Físicas y Naturales, el programa reúne a destacados profesionales y docentes, lo que garantiza
                         una formación actualizada y adaptada a las exigencias del mercado.</li>
@@ -809,8 +812,9 @@
     <section id="cursos">
         <div class="container">
             <h2>Cursos y Profesores</h2>
-            <p class="course-intro">Explora nuestros cursos y conoce a los profesores que los imparten. Haz clic en un curso para ver más detalles.</p>
-            
+            <p class="course-intro">Explora nuestros cursos y conoce a los profesores que los imparten. Haz clic en un
+                curso para ver más detalles.</p>
+
             <div id="courses-grid" class="courses-grid">
                 <!-- Courses will be populated here by JavaScript -->
             </div>
@@ -865,6 +869,8 @@
             const endMonth = 11; // December (0-indexed)
             let currentMonth = startMonth;
             let currentYear = 2025;
+
+            // Define teachers details
 
             const teachers = [
                 {
@@ -931,7 +937,7 @@
                     name: "Gabriel Salcedo",
                     summary: "Experto en Godot Engine.",
                     photo: "photos/teacher_11.jpg",
-                    linkedIn: "https://www.linkedin.com/in/gabriel-salcedo-8b0a1b1a4/"
+                    linkedIn: "https://www.linkedin.com/in/gabosalcedo/"
                 }
             ];
 
@@ -1253,62 +1259,62 @@
             // Course and Teacher Section
             function populateCoursesSection() {
                 const coursesGrid = document.getElementById('courses-grid');
-                
+
                 // Clear any existing content
                 coursesGrid.innerHTML = '';
-                
+
                 // Add each course
                 courses.forEach((course, index) => {
                     const courseCard = document.createElement('div');
                     courseCard.classList.add('course-card');
-                    
+
                     // Create header with course color
                     const courseHeader = document.createElement('div');
                     courseHeader.classList.add('course-header');
                     courseHeader.style.backgroundColor = course.color;
-                    
+
                     const courseTitle = document.createElement('h3');
                     courseTitle.classList.add('course-title');
                     courseTitle.textContent = course.title;
-                    
+
                     const courseTime = document.createElement('div');
                     courseTime.classList.add('course-time');
                     courseTime.textContent = course.time;
-                    
+
                     courseHeader.appendChild(courseTitle);
                     courseHeader.appendChild(courseTime);
-                    
+
                     // Create body with description and teacher list
                     const courseBody = document.createElement('div');
                     courseBody.classList.add('course-body');
-                    
+
                     const courseDescription = document.createElement('p');
                     courseDescription.classList.add('course-description');
                     courseDescription.textContent = course.description;
-                    
+
                     const courseTeachers = document.createElement('div');
                     courseTeachers.classList.add('course-teachers');
-                    
+
                     if (course.teachers && course.teachers.length > 0) {
                         // Display teacher count
                         courseTeachers.innerHTML = `<span>${course.teachers.length} profesor${course.teachers.length > 1 ? 'es' : ''}</span> imparten este curso`;
                     } else {
                         courseTeachers.innerHTML = "<span>Por confirmar</span> el profesor de este curso";
                     }
-                    
+
                     const viewDetailsBtn = document.createElement('button');
                     viewDetailsBtn.classList.add('view-details-btn');
                     viewDetailsBtn.textContent = 'Ver detalles';
                     viewDetailsBtn.onclick = () => openCourseModal(index);
-                    
+
                     courseBody.appendChild(courseDescription);
                     courseBody.appendChild(courseTeachers);
                     courseBody.appendChild(viewDetailsBtn);
-                    
+
                     // Assemble the card
                     courseCard.appendChild(courseHeader);
                     courseCard.appendChild(courseBody);
-                    
+
                     // Add to grid
                     coursesGrid.appendChild(courseCard);
                 });
@@ -1321,63 +1327,63 @@
             function openCourseModal(courseIndex) {
                 const course = courses[courseIndex];
                 const modalContent = document.getElementById('modal-content-container');
-                
+
                 // Clear previous content
                 modalContent.innerHTML = '';
-                
+
                 // Create course header
                 const courseHeader = document.createElement('div');
                 courseHeader.classList.add('course-detail-header');
                 courseHeader.style.backgroundColor = course.color;
-                
+
                 const courseTitle = document.createElement('h3');
                 courseTitle.textContent = course.title;
-                
+
                 const courseTime = document.createElement('p');
                 courseTime.textContent = `Horario: ${course.time}`;
-                
+
                 courseHeader.appendChild(courseTitle);
                 courseHeader.appendChild(courseTime);
-                
+
                 // Create course details
                 const courseDetails = document.createElement('div');
-                
+
                 const courseDescription = document.createElement('p');
                 courseDescription.textContent = course.description;
-                
+
                 courseDetails.appendChild(courseDescription);
-                
+
                 // Create teacher list
                 const teacherList = document.createElement('div');
                 teacherList.classList.add('teacher-list');
-                
+
                 const teacherHeading = document.createElement('h3');
                 teacherHeading.textContent = 'Profesores';
                 teacherList.appendChild(teacherHeading);
-                
+
                 if (course.teachers && course.teachers.length > 0) {
                     course.teachers.forEach(teacherIndex => {
                         const teacher = teachers[teacherIndex];
-                        
+
                         const teacherCard = document.createElement('div');
                         teacherCard.classList.add('teacher-card');
-                        
+
                         // Create teacher photo
                         const teacherPhoto = document.createElement('img');
                         teacherPhoto.classList.add('teacher-photo');
                         teacherPhoto.src = teacher.photo || 'https://via.placeholder.com/150';
                         teacherPhoto.alt = teacher.name;
-                        
+
                         // Create teacher info
                         const teacherInfo = document.createElement('div');
                         teacherInfo.classList.add('teacher-info');
-                        
+
                         const teacherName = document.createElement('h4');
                         teacherName.textContent = teacher.name;
-                        
+
                         const teacherSummary = document.createElement('p');
                         teacherSummary.textContent = teacher.summary;
-                        
+
                         // LinkedIn link
                         const teacherLinkedIn = document.createElement('a');
                         teacherLinkedIn.classList.add('teacher-linkedin');
@@ -1389,14 +1395,14 @@
                             </svg>
                             Ver perfil en LinkedIn
                         `;
-                        
+
                         teacherInfo.appendChild(teacherName);
                         teacherInfo.appendChild(teacherSummary);
                         teacherInfo.appendChild(teacherLinkedIn);
-                        
+
                         teacherCard.appendChild(teacherPhoto);
                         teacherCard.appendChild(teacherInfo);
-                        
+
                         teacherList.appendChild(teacherCard);
                     });
                 } else {
@@ -1405,23 +1411,23 @@
                     noTeacherMessage.style.fontStyle = 'italic';
                     teacherList.appendChild(noTeacherMessage);
                 }
-                
+
                 // Assemble modal content
                 modalContent.appendChild(courseHeader);
                 modalContent.appendChild(courseDetails);
                 modalContent.appendChild(teacherList);
-                
+
                 // Show modal
                 modal.classList.add('modal-show');
             }
 
             // Close modal when clicking on X
-            closeModalBtn.onclick = function() {
+            closeModalBtn.onclick = function () {
                 modal.classList.remove('modal-show');
             };
 
             // Close modal when clicking outside of it
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target === modal) {
                     modal.classList.remove('modal-show');
                 }
