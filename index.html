@@ -345,53 +345,53 @@
                 gap: 3px;
                 padding: 5px;
             }
-            
+
             .calendar-day {
                 padding: 5px;
                 min-height: 60px;
                 font-size: 0.85rem;
             }
-            
+
             .calendar-date {
                 font-size: 0.8rem;
                 margin-bottom: 3px;
             }
-            
+
             .calendar-class {
                 font-size: 0.75rem;
                 padding: 3px 4px;
                 margin-top: 3px;
             }
-            
+
             .calendar-container {
                 padding: 0.75rem;
             }
-            
+
             #current-month {
                 font-size: 1.2rem;
             }
-            
+
             .calendar-nav-btn {
                 width: 32px;
                 height: 32px;
                 font-size: 1rem;
             }
-            
+
             .calendar-header div {
                 font-size: 0.85rem;
                 padding: 0.5rem 0;
             }
-            
+
             .calendar-class .short-title {
                 display: block !important;
                 font-size: 0.75rem;
             }
-            
+
             .calendar-class .full-title {
                 display: none !important;
             }
-            
-            .calendar-class br + span,
+
+            .calendar-class br+span,
             .calendar-class br {
                 font-size: 0.7rem;
             }
@@ -418,7 +418,7 @@
             .calendar-class .short-title {
                 display: block !important;
             }
-            
+
             .calendar-class .full-title {
                 display: none !important;
             }
@@ -426,25 +426,231 @@
 
         @media (max-width: 768px) {
             #supporters img {
-                max-width: 80px !important; /* Significantly reduce logo size on mobile */
+                max-width: 80px !important;
+                /* Significantly reduce logo size on mobile */
             }
-            
+
             #supporters div {
-                gap: 10px !important; /* Reduce spacing between logos */
+                gap: 10px !important;
+                /* Reduce spacing between logos */
             }
-            
+
             #supporters {
-                padding: 1.5rem 0 !important; /* Reduce vertical padding */
+                padding: 1.5rem 0 !important;
+                /* Reduce vertical padding */
             }
         }
 
         @media (max-width: 480px) {
             #supporters img {
-                max-width: 60px !important; /* Further reduce for very small screens */
+                max-width: 60px !important;
+                /* Further reduce for very small screens */
             }
-            
+
             #supporters div {
-                gap: 5px !important; /* Minimal spacing */
+                gap: 5px !important;
+                /* Minimal spacing */
+            }
+        }
+
+        /* Course Section Styles */
+        .course-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .course-time {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .course-description {
+            margin: 1rem 0;
+            color: var(--dark);
+        }
+
+        .course-teachers {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .course-teachers span {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .view-details-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            margin-top: 1rem;
+            padding: .6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            margin-right: 1rem;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-show .modal-content {
+            transform: translateY(0);
+        }
+
+        .course-detail-header {
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .teacher-list {
+            margin-top: 2rem;
+        }
+
+        .teacher-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border: 3px solid var(--secondary);
+        }
+
+        .teacher-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-linkedin {
+            display: inline-flex;
+            align-items: center;
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .teacher-linkedin svg {
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .teacher-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .teacher-photo {
+                margin-right: 0;
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -475,6 +681,7 @@
             <h2>Aspectos Destacados</h2>
             <div class="highlights">
                 <ul>
+                    <li><strong>Inicio Oficial:</strong> La diplomatura comienza el 23 de abril a las 17:00 horas en el local de CECI (Centro de Economía del Conocimiento e Innovación), ubicado en <a href="https://g.co/kgs/Z9ZHxBW" target="_blank" style="color: var(--secondary); text-decoration: underline;">este enlace</a>.</li>
                     <li><strong>Calidad Académica e Industria:</strong> Con el aval de la Facultad de Ciencias Exactas,
                         Físicas y Naturales, el programa reúne a destacados profesionales y docentes, lo que garantiza
                         una formación actualizada y adaptada a las exigencias del mercado.</li>
@@ -536,7 +743,8 @@
                 <div class="payment-info"
                     style="margin-top: 2rem; padding: 1rem; background-color: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
                     <h3 style="color: var(--primary); margin-bottom: 1rem;">Forma de Pago</h3>
-                    <p>Los pagos se deben realizar mediante transferencia bancaria a la siguiente cuenta del Banco de la Nación Argentina:</p>
+                    <p>Los pagos se deben realizar mediante transferencia bancaria a la siguiente cuenta del Banco de la
+                        Nación Argentina:</p>
                     <div
                         style="background-color: rgba(54, 143, 139, 0.41); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
                         <p><strong>Beneficiario:&nbsp;</strong>Universidad Nacional de San Juan</p>
@@ -544,15 +752,20 @@
                         <p><strong>Alias:&nbsp;</strong>exactas.unsj</p>
                         <p><strong>CBU:&nbsp;</strong>0110474920047420129470</p>
                     </div>
-                    <div style="background-color: rgba(221, 185, 103, 0.2); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <div
+                        style="background-color: rgba(221, 185, 103, 0.2); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
                         <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Fechas de Pago</h4>
-                        <p><strong>Para pago en 1 cuota:</strong> El pago debe realizarse antes del 20 de abril de 2025.</p>
+                        <p><strong>Para total:</strong> El pago debe realizarse antes del 20 de abril de 2025.
+                        </p>
                         <p><strong>Para pago en 2 cuotas:</strong></p>
                         <ul style="list-style-type: disc; margin-left: 1.5rem;">
                             <li>Primera cuota: antes del 20 de abril de 2025</li>
                             <li>Segunda cuota: antes del 20 de julio de 2025</li>
                         </ul>
-                        <p style="margin-top: 0.75rem;"><strong>Importante:</strong> Enviar el comprobante de pago con su apellido, nombre y DNI al correo <a href="mailto:diplodev@iinfo.unsj.edu.ar" style="color: var(--primary); text-decoration: underline;">diplodev@iinfo.unsj.edu.ar</a></p>
+                        <p style="margin-top: 0.75rem;"><strong>Importante:</strong> Enviar el comprobante de pago con
+                            su apellido, nombre y DNI al correo <a href="mailto:diplodev@iinfo.unsj.edu.ar"
+                                style="color: var(--primary); text-decoration: underline;">diplodev@iinfo.unsj.edu.ar</a>
+                        </p>
                     </div>
                 </div>
 
@@ -593,6 +806,27 @@
         </div>
     </section>
 
+    <section id="cursos">
+        <div class="container">
+            <h2>Cursos y Profesores</h2>
+            <p class="course-intro">Explora nuestros cursos y conoce a los profesores que los imparten. Haz clic en un curso para ver más detalles.</p>
+            
+            <div id="courses-grid" class="courses-grid">
+                <!-- Courses will be populated here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for course details -->
+    <div id="course-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-content-container">
+                <!-- Course and teacher details will be populated here -->
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div id="supporters" style="padding: 3rem 0; text-align: center;">
             <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;">
@@ -632,20 +866,173 @@
             let currentMonth = startMonth;
             let currentYear = 2025;
 
+            const teachers = [
+                {
+                    name: "Franco Joaquín Echegaray Rodríguez",
+                    summary: "Experto en Unreal Engine y programación de videojuegos.",
+                    photo: "photos/teacher_01.jpg",
+                    linkedIn: "https://www.linkedin.com/in/franco-echegaray/"
+                },
+                {
+                    name: "Leandro Martin Turchetti",
+                    summary: "Especialista en producción y gestión de proyectos de videojuegos.",
+                    photo: "photos/teacher_02.jpg",
+                    linkedIn: "https://www.linkedin.com/in/leandro-turchetti/"
+                },
+                {
+                    name: "Emilio Gustavo Ormeño",
+                    summary: "Unity 3D Programer / Godot Developer / Professor At National University of San Juan.",
+                    photo: "photos/teacher_03.jpg",
+                    linkedIn: "https://www.linkedin.com/in/eormeno/"
+                },
+                {
+                    name: "Mateo Quinteros",
+                    summary: "Ilustrador - 2D artist -Profesor universitario. UNLP",
+                    photo: "photos/teacher_04.jpg",
+                    linkedIn: "https://www.linkedin.com/in/mateo-quinteros-1335301b5/"
+                },
+                {
+                    name: "Manuel Mendoza",
+                    summary: "Sound Designer / Musical Composer.",
+                    photo: "photos/teacher_05.jpg",
+                    linkedIn: "https://www.linkedin.com/in/manuel-mendoza95/"
+                },
+                {
+                    name: "Sofía Podestá",
+                    summary: "Project Manager in Game Development / Game Aart Production Manager.",
+                    photo: "photos/teacher_06.jpg",
+                    linkedIn: "https://www.linkedin.com/in/sofiagarciapodesta/"
+                },
+                {
+                    name: "Camila Torales Vázquez",
+                    summary: "Game producer / Project Manager in life and games / World Creation Master / Mandolin Proficient Bard.",
+                    photo: "photos/teacher_07.jpg",
+                    linkedIn: "https://www.linkedin.com/in/ctorales/"
+                },
+                {
+                    name: "Alejandro García",
+                    summary: "Modelador 3D",
+                    photo: "photos/teacher_08.jpg",
+                    linkedIn: "https://www.linkedin.com/in/ale-garcia96/"
+                },
+                {
+                    name: "Federico Garazo",
+                    summary: "Experto en Unreal Engine e instructor oficial del motor.",
+                    photo: "photos/teacher_09.jpg",
+                    linkedIn: "https://federicogarazo.carrd.co/"
+                },
+                {
+                    name: "Andrés Mauricio Jaliff",
+                    summary: "Experto en emprendimiento y negocios relacionados con videojuegos.",
+                    photo: "photos/teacher_10.jpg",
+                    linkedIn: "https://www.linkedin.com/in/andr%C3%A9s-jaliff-0058888"
+                },
+                {
+                    name: "Gabriel Salcedo",
+                    summary: "Experto en Godot Engine.",
+                    photo: "photos/teacher_11.jpg",
+                    linkedIn: "https://www.linkedin.com/in/gabriel-salcedo-8b0a1b1a4/"
+                }
+            ];
+
             // Define all courses once with their details
             const courses = [
-                { title: "Introducción a Unreal Engine", shortTitle: "Unreal", time: "18:00 - 20:00", color: "#4D6CFA", class: 1 },
-                { title: "Producción", shortTitle: "Prod.", time: "18:30 - 20:30", color: "#3CAEA3", class: 1 },
-                { title: "Ilustración 2D I", shortTitle: "Ilus. 2D I", time: "16:00 - 18:00", color: "#F6B93B", class: 1 },
-                { title: "Fundamentos de Game Design I", shortTitle: "G.Design I", time: "18:30 - 20:30", color: "#9D7FEA", class: 1 },
-                { title: "Introducción a Godot Engine", shortTitle: "Godot", time: "16:00 - 18:00", color: "#E57373", class: 1 },
-                { title: "Blueprints avanzados", shortTitle: "Blueprints", time: "18:00 - 20:00", color: "#81C784", class: 1 },
-                { title: "Fundamentos de Game Design II", shortTitle: "G. Design II", time: "18:30 - 20:30", color: "#673AB7", class: 1 },
-                { title: "Modelado Poligonal", shortTitle: "Mod. Polig.", time: "16:00 - 18:00", color: "#FFC107", class: 1 },
-                { title: "Introducción al Modelado 3D", shortTitle: "Mod. 3D", time: "16:00 - 18:00", color: "#F48FB1", class: 1 },
-                { title: "Ilustración 2D II", shortTitle: "Ilus. 2D II", time: "16:00 - 18:00", color: "#FF7043", class: 1 },
-                { title: "Emprendedurismo para videojuegos", shortTitle: "Emprend.", time: "16:00 - 18:00", color: "#5C6BC0", class: 1 },
-                { title: "Sonido en Unreal Engine", shortTitle: "Sonido UE", time: "18:00 - 20:00", color: "#8BC34A", class: 1 }
+                {
+                    title: "Introducción a Unreal Engine",
+                    shortTitle: "Unreal",
+                    time: "18:00 - 20:00",
+                    color: "#4D6CFA",
+                    teachers: [8],
+                    description: "Aprende a usar Unreal Engine, un motor de videojuegos potente y versátil."
+                },
+                {
+                    title: "Producción",
+                    shortTitle: "Prod.",
+                    time: "18:30 - 20:30",
+                    color: "#3CAEA3",
+                    teachers: [6],
+                    description: "Gestión de proyectos de videojuegos, desde la idea inicial hasta la entrega final."
+                },
+                {
+                    title: "Ilustración 2D I",
+                    shortTitle: "Ilus. 2D I",
+                    time: "16:00 - 18:00",
+                    color: "#F6B93B",
+                    teachers: [3],
+                    description: "Fundamentos de ilustración digital y diseño de personajes."
+                },
+                {
+                    title: "Fundamentos de Game Design I",
+                    shortTitle: "G.Design I",
+                    time: "18:30 - 20:30",
+                    color: "#9D7FEA",
+                    teachers: [5],
+                    description: "Principios básicos del diseño de juegos, mecánicas y narrativa."
+                },
+                {
+                    title: "Introducción a Godot Engine",
+                    shortTitle: "Godot",
+                    time: "16:00 - 18:00",
+                    color: "#E57373",
+                    teachers: [2, 10],
+                    description: "Aprende a usar Godot Engine, un motor de videojuegos de código abierto."
+                },
+                {
+                    title: "Blueprints avanzados",
+                    shortTitle: "Blueprints",
+                    time: "18:00 - 20:00",
+                    color: "#81C784",
+                    teachers: [8],
+                    description: "Profundiza en el sistema de scripting visual de Unreal Engine."
+                },
+                {
+                    title: "Fundamentos de Game Design II",
+                    shortTitle: "G. Design II",
+                    time: "18:30 - 20:30",
+                    color: "#673AB7",
+                    teachers: [5],
+                    description: "Continuación de los fundamentos del diseño de juegos, enfocándose en la jugabilidad."
+                },
+                {
+                    title: "Modelado Poligonal",
+                    shortTitle: "Mod. Polig.",
+                    time: "16:00 - 18:00",
+                    color: "#FFC107",
+                    teachers: [7],
+                    description: "Técnicas de modelado 3D utilizando software especializado."
+                },
+                {
+                    title: "Introducción al Modelado 3D",
+                    shortTitle: "Mod. 3D",
+                    time: "16:00 - 18:00",
+                    color: "#F48FB1",
+                    teachers: [7],
+                    description: "Fundamentos del modelado 3D, incluyendo texturización y renderizado."
+                },
+                {
+                    title: "Ilustración 2D II",
+                    shortTitle: "Ilus. 2D II",
+                    time: "16:00 - 18:00",
+                    color: "#FF7043",
+                    teachers: [3],
+                    description: "Avanzando en técnicas de ilustración digital y diseño de personajes."
+                },
+                {
+                    title: "Emprendedurismo para videojuegos",
+                    shortTitle: "Emprend.",
+                    time: "16:00 - 18:00",
+                    color: "#5C6BC0",
+                    teachers: [9],
+                    description: "Aspectos clave para emprender en la industria de los videojuegos."
+                },
+                {
+                    title: "Sonido en Unreal Engine",
+                    shortTitle: "Sonido UE",
+                    time: "18:00 - 20:00",
+                    color: "#8BC34A",
+                    teachers: [4],
+                    description: "Integración de sonido y música en Unreal Engine."
+                }
             ];
 
             // Course schedule using indices from the courses array
@@ -686,44 +1073,44 @@
                 "2025-07-03": [4],
                 "2025-07-04": [2, 3],
 
-                "2025-07-23": [8,0],
+                "2025-07-23": [8, 0],
                 "2025-07-24": [4],
                 "2025-07-25": [2],
                 "2025-07-30": [8],
                 "2025-07-31": [4],
                 // Agosto
-                "2025-08-01": [2,6],
+                "2025-08-01": [2, 6],
 
                 "2025-08-06": [7],
                 "2025-08-07": [5],
-                "2025-08-08": [2,6],
+                "2025-08-08": [2, 6],
 
                 "2025-08-13": [7],
                 "2025-08-14": [5],
 
                 "2025-08-20": [7],
                 "2025-08-21": [5],
-                "2025-08-22": [2,6],
+                "2025-08-22": [2, 6],
 
                 "2025-08-27": [7],
                 "2025-08-28": [5],
-                "2025-08-29": [6,9],
+                "2025-08-29": [6, 9],
 
                 // Septiembre
                 "2025-09-03": [7],
                 "2025-09-04": [5],
-                "2025-09-05": [6,9],
+                "2025-09-05": [6, 9],
 
                 "2025-09-10": [7],
-                "2025-09-12": [6,9],
+                "2025-09-12": [6, 9],
 
                 "2025-09-17": [7],
                 "2025-09-18": [5],
-                "2025-09-19": [6,9],
+                "2025-09-19": [6, 9],
 
                 "2025-09-24": [7],
                 "2025-09-25": [5],
-                "2025-09-26": [6,9],
+                "2025-09-26": [6, 9],
 
                 // Octubre
                 "2025-10-02": [5],
@@ -740,15 +1127,15 @@
                 "2025-10-30": [5],
 
                 // Noviembre
-                "2025-11-06": [10,11],
+                "2025-11-06": [10, 11],
                 "2025-11-07": [10],
 
-                "2025-11-13": [10,11],
+                "2025-11-13": [10, 11],
                 "2025-11-14": [10],
 
-                "2025-11-20": [10,11],
+                "2025-11-20": [10, 11],
 
-                "2025-11-27": [10,11],
+                "2025-11-27": [10, 11],
                 "2025-11-28": [10],
 
                 // Diciembre
@@ -862,6 +1249,186 @@
 
             // Initial render
             renderCalendar(currentMonth, currentYear);
+
+            // Course and Teacher Section
+            function populateCoursesSection() {
+                const coursesGrid = document.getElementById('courses-grid');
+                
+                // Clear any existing content
+                coursesGrid.innerHTML = '';
+                
+                // Add each course
+                courses.forEach((course, index) => {
+                    const courseCard = document.createElement('div');
+                    courseCard.classList.add('course-card');
+                    
+                    // Create header with course color
+                    const courseHeader = document.createElement('div');
+                    courseHeader.classList.add('course-header');
+                    courseHeader.style.backgroundColor = course.color;
+                    
+                    const courseTitle = document.createElement('h3');
+                    courseTitle.classList.add('course-title');
+                    courseTitle.textContent = course.title;
+                    
+                    const courseTime = document.createElement('div');
+                    courseTime.classList.add('course-time');
+                    courseTime.textContent = course.time;
+                    
+                    courseHeader.appendChild(courseTitle);
+                    courseHeader.appendChild(courseTime);
+                    
+                    // Create body with description and teacher list
+                    const courseBody = document.createElement('div');
+                    courseBody.classList.add('course-body');
+                    
+                    const courseDescription = document.createElement('p');
+                    courseDescription.classList.add('course-description');
+                    courseDescription.textContent = course.description;
+                    
+                    const courseTeachers = document.createElement('div');
+                    courseTeachers.classList.add('course-teachers');
+                    
+                    if (course.teachers && course.teachers.length > 0) {
+                        // Display teacher count
+                        courseTeachers.innerHTML = `<span>${course.teachers.length} profesor${course.teachers.length > 1 ? 'es' : ''}</span> imparten este curso`;
+                    } else {
+                        courseTeachers.innerHTML = "<span>Por confirmar</span> el profesor de este curso";
+                    }
+                    
+                    const viewDetailsBtn = document.createElement('button');
+                    viewDetailsBtn.classList.add('view-details-btn');
+                    viewDetailsBtn.textContent = 'Ver detalles';
+                    viewDetailsBtn.onclick = () => openCourseModal(index);
+                    
+                    courseBody.appendChild(courseDescription);
+                    courseBody.appendChild(courseTeachers);
+                    courseBody.appendChild(viewDetailsBtn);
+                    
+                    // Assemble the card
+                    courseCard.appendChild(courseHeader);
+                    courseCard.appendChild(courseBody);
+                    
+                    // Add to grid
+                    coursesGrid.appendChild(courseCard);
+                });
+            }
+
+            // Modal functionality
+            const modal = document.getElementById('course-modal');
+            const closeModalBtn = document.querySelector('.close-modal');
+
+            function openCourseModal(courseIndex) {
+                const course = courses[courseIndex];
+                const modalContent = document.getElementById('modal-content-container');
+                
+                // Clear previous content
+                modalContent.innerHTML = '';
+                
+                // Create course header
+                const courseHeader = document.createElement('div');
+                courseHeader.classList.add('course-detail-header');
+                courseHeader.style.backgroundColor = course.color;
+                
+                const courseTitle = document.createElement('h3');
+                courseTitle.textContent = course.title;
+                
+                const courseTime = document.createElement('p');
+                courseTime.textContent = `Horario: ${course.time}`;
+                
+                courseHeader.appendChild(courseTitle);
+                courseHeader.appendChild(courseTime);
+                
+                // Create course details
+                const courseDetails = document.createElement('div');
+                
+                const courseDescription = document.createElement('p');
+                courseDescription.textContent = course.description;
+                
+                courseDetails.appendChild(courseDescription);
+                
+                // Create teacher list
+                const teacherList = document.createElement('div');
+                teacherList.classList.add('teacher-list');
+                
+                const teacherHeading = document.createElement('h3');
+                teacherHeading.textContent = 'Profesores';
+                teacherList.appendChild(teacherHeading);
+                
+                if (course.teachers && course.teachers.length > 0) {
+                    course.teachers.forEach(teacherIndex => {
+                        const teacher = teachers[teacherIndex];
+                        
+                        const teacherCard = document.createElement('div');
+                        teacherCard.classList.add('teacher-card');
+                        
+                        // Create teacher photo
+                        const teacherPhoto = document.createElement('img');
+                        teacherPhoto.classList.add('teacher-photo');
+                        teacherPhoto.src = teacher.photo || 'https://via.placeholder.com/150';
+                        teacherPhoto.alt = teacher.name;
+                        
+                        // Create teacher info
+                        const teacherInfo = document.createElement('div');
+                        teacherInfo.classList.add('teacher-info');
+                        
+                        const teacherName = document.createElement('h4');
+                        teacherName.textContent = teacher.name;
+                        
+                        const teacherSummary = document.createElement('p');
+                        teacherSummary.textContent = teacher.summary;
+                        
+                        // LinkedIn link
+                        const teacherLinkedIn = document.createElement('a');
+                        teacherLinkedIn.classList.add('teacher-linkedin');
+                        teacherLinkedIn.href = teacher.linkedIn;
+                        teacherLinkedIn.target = '_blank';
+                        teacherLinkedIn.innerHTML = `
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            Ver perfil en LinkedIn
+                        `;
+                        
+                        teacherInfo.appendChild(teacherName);
+                        teacherInfo.appendChild(teacherSummary);
+                        teacherInfo.appendChild(teacherLinkedIn);
+                        
+                        teacherCard.appendChild(teacherPhoto);
+                        teacherCard.appendChild(teacherInfo);
+                        
+                        teacherList.appendChild(teacherCard);
+                    });
+                } else {
+                    const noTeacherMessage = document.createElement('p');
+                    noTeacherMessage.textContent = 'Profesores por confirmar.';
+                    noTeacherMessage.style.fontStyle = 'italic';
+                    teacherList.appendChild(noTeacherMessage);
+                }
+                
+                // Assemble modal content
+                modalContent.appendChild(courseHeader);
+                modalContent.appendChild(courseDetails);
+                modalContent.appendChild(teacherList);
+                
+                // Show modal
+                modal.classList.add('modal-show');
+            }
+
+            // Close modal when clicking on X
+            closeModalBtn.onclick = function() {
+                modal.classList.remove('modal-show');
+            };
+
+            // Close modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('modal-show');
+                }
+            };
+
+            // Initialize the courses section when the page loads
+            populateCoursesSection();
         });
     </script>
 </body>
